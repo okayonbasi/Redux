@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import {updateUser} from './actions/users-actions';
+import {updateUser, getUsers} from './actions/users-actions';
 
 class App extends Component {
 
@@ -13,6 +13,11 @@ class App extends Component {
   onUpdateUser() {
     this.props.onUpdateUser('Onur');
   }
+  componentDidMount() {
+    this.props.onGetUsers();
+  }
+  
+ 
   render() {
     return (
       <div className="App">
@@ -34,14 +39,10 @@ const mapStateToProps = (state,props) => {
 }
 
 const mapDispatchToProps = {
-  onUpdateUser: updateUser
+  onUpdateUser: updateUser,
+  onGetUsers: getUsers
 };
 
-const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
-  console.log(propsFromState);
-  console.log(propsFromDispatch);
-  console.log(ownProps);
-  return {};
-};
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
