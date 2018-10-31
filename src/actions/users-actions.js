@@ -20,10 +20,19 @@ export function showError(){
     };
 }
 export function getUsers(){
-    return dispatch => {
-        axios.get('http://jsonplaceholder.typicode.com/users/1')
+    return async dispatch => {
+        try{
+            const res = await axios.get('http://jsonplaceholder.typicode.com/users/2');
+            dispatch(updateUser(res.data.name));
+        }
+        catch(e){
+            dispatch(showError());
+        }
+       
+
+        /*axios.get('http://jsonplaceholder.typicode.com/users/1')
         .then(response => response.data)
         .then(response => dispatch(updateUser(response.name)))
-        .catch(error => dispatch(showError()))
+        .catch(error => dispatch(showError()))*/
     }
 }
