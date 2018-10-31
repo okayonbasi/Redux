@@ -27,8 +27,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-    return state;
+const mapStateToProps = (state,props) => {
+    return {
+      ...state,
+      mycount: props.count + 2
+    }
 }
 
 const mapDispatchToProps = {
