@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {combineReducers, createStore} from 'redux';
-
+import { Provider } from 'react-redux';
 function productReducer(state = [], action){
     return state;
 }
@@ -40,5 +40,5 @@ const updateUserAction = {
 store.dispatch(updateUserAction);
 
 console.log(store.getState())
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 serviceWorker.unregister();
