@@ -16,7 +16,13 @@ const rootReducer = combineReducers({
     user: userReducer,
     products: productReducer
 })
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, {
+    products:[{
+        name:"Samsung",
+        type:"TV"
+    }],
+    user:"Okay"
+});
 console.log(store.getState())
 ReactDOM.render(<App />, document.getElementById('root'));
 serviceWorker.unregister();
