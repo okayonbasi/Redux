@@ -9,7 +9,11 @@ function productReducer(state = [], action){
     return state;
 }
 function userReducer(state="", action){
-    return state;
+    switch(action.type){
+        case "userUpdate":
+            return action.payload;
+          default:  return state;
+        }
 }
 
 const rootReducer = combineReducers({
@@ -22,7 +26,19 @@ const store = createStore(rootReducer, {
         type:"TV"
     }],
     user:"Okay"
-});
+    },
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
+
+const updateUserAction = {
+    type: "userUpdate",
+    payload:{
+        user:"Onur"
+    }
+}
+
+store.dispatch(updateUserAction);
+
 console.log(store.getState())
 ReactDOM.render(<App />, document.getElementById('root'));
 serviceWorker.unregister();
