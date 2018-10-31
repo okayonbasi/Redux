@@ -14,7 +14,6 @@ class App extends Component {
     this.props.onUpdateUser('Onur');
   }
   render() {
-    console.log(this.props);
     return (
       <div className="App">
         
@@ -38,4 +37,11 @@ const mapDispatchToProps = {
   onUpdateUser: updateUser
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
+  console.log(propsFromState);
+  console.log(propsFromDispatch);
+  console.log(ownProps);
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(App);
